@@ -45,13 +45,45 @@ h1 {
   align-items: center;
 }
 
-.flex-item-50 {
-  width: 50%;
-  flex-basis: 50%;
+.flex-wrap {
+  flex-wrap: wrap;
 }
 
 .addMember {
   padding-inline-end: 15px;
+
+  width: 100%;
+}
+
+.container > .flex {
+  flex-direction: column;
+}
+
+@media screen and (min-width: 575px) and (max-width: 991px) {
+}
+
+@media screen and (max-width: 991px) {
+  .teams {
+    margin-block-start: 2rem;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .container > .flex {
+    flex-direction: row;
+  }
+
+  .addMember {
+    align-self: flex-start;
+    position: sticky;
+    top: 10px;
+  }
+
+  .addMember,
+  .teams {
+    width: 50%;
+    flex-basis: 50%;
+  }
 }
 
 .addMember label {
@@ -74,10 +106,11 @@ h1 {
   padding-inline-start: 0.75rem;
   border-color: #e8e8e8;
   flex-grow: 1;
+  min-width: 65px;
 }
 
 .addMember button {
-  background-color: #71b6ff;
+  background-color: #3373b7;
   border: 1px solid transparent;
   color: white;
   border-radius: 3px;
@@ -105,20 +138,27 @@ h1 {
 }
 
 .addMember ul {
-  list-style: none;
   padding: 0.5rem 0.25rem;
-  box-shadow: inset 0 5px 10px rgb(0 0 0 / 10%);
+  box-shadow: inset;
+  overflow: auto;
+}
+
+.addMember ul,
+.team ul {
+  list-style: none;
   border: 2px solid #e8e8e8;
   border-radius: 3px;
   background-color: white;
 }
 
-.addMember ul li {
+.addMember ul li,
+.team ul li {
   padding-inline: 1.5rem;
   padding-block: 1rem;
 }
 
-.addMember ul li:not(:last-child) {
+.addMember ul li:not(:last-child),
+.team ul li:not(:last-child) {
   border-bottom: 1px solid #e8e8e8;
 }
 .addMember .buttonsArea {
@@ -131,6 +171,29 @@ h1 {
 .addMember #reset {
   background-color: #fa5151;
 }
-.teams {
-  padding-inline-start: 10px;
+
+.teams .team {
+  width: 33.333%;
+  flex-basis: 33.333%;
+  padding-inline: 15px;
+  margin-bottom: 1rem;
+}
+
+@media screen and (min-width: 993px) and (max-width: 1200px) {
+  .teams .team {
+    width: 50%;
+    flex-basis: 50%;
+  }
+}
+
+.teams .team h4 {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.teams .team ul {
+  margin-block: 0.5rem;
+  padding: 0.5rem 0.25rem;
+  border-width: 1px;
+  box-shadow: 0 3px 6px rgb(0 0 0/ 30%);
 }
